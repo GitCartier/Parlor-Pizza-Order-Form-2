@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML and JavaScript</title>
+    <script>
+        // Function to validate text fields
+        function validateText() {
+            var customer = document.PizzaForm.customer.value;
+            if (customer.length == 0) return false;
+
+            var address = document.PizzaForm.address.value;
+            if (address.length == 0) return false;
+
+            var city = document.PizzaForm.city.value;
+            if (city.length == 0) return false;
+
+            var phone = document.PizzaForm.phone.value;
+            if (phone.length == 0) return false;
+
+            return true;
+        }
+
+        // Function to validate radio button selection
+        function validateRadio() {
+            if (document.PizzaForm.sizes[0].checked) return true;
+            if (document.PizzaForm.sizes[1].checked) return true;
+            if (document.PizzaForm.sizes[2].checked) return true;
+            return false;
+        }
+
+        // Function to handle form submission
+        function doSubmit() {
+            if (validateText() == false) {
+                alert("Required data missing in Step 1");
+                return;
+            }
+            if (validateRadio() == false) {
+                alert("Required data missing in Step 2");
+                return;
+            }
+            alert("Your pizza order has been submitted.");
+        }
+
+        // Function to clear all input fields
+        function doClear() {
+            document.PizzaForm.customer.value = "";
+            document.PizzaForm.address.value = "";
+            document.PizzaForm.city.value = "";
+            document.PizzaForm.state.value = "";
+            document.PizzaForm.zip.value = "";
+            document.PizzaForm.phone.value = "";
+        }
+    </script>
+</head>
+<body>
+    <form name="PizzaForm">
+        <h1>The JavaScript Pizza Parlor</h1>
+        
+        <h4>Step 1: Enter your name, address, and phone number:</h4>
+        <div style="font-family: 'Courier New', monospace;">
+            Name: <input name="customer" size="50" type="text"><br><br>
+            Address: <input name="address" size="50" type="text"><br><br>
+            City: <input name="city" size="15" type="text">
+            State: <input name="state" size="2" type="text">
+            Zip: <input name="zip" size="5" type="text"><br><br>
+            Phone: <input name="phone" size="20" type="text"><br>
+        </div>
+
+        <h4>Step 2: Select the size of pizza you want:</h4>
+        <div style="font-family: 'Courier New', monospace;">
+            <input name="sizes" type="radio" value="Small"> Small<br>
+            <input name="sizes" type="radio" value="Medium"> Medium<br>
+            <input name="sizes" type="radio" value="Large"> Large<br>
+        </div>
+
+        <h4>Step 3: Select the pizza toppings you want:</h4>
+        <div style="font-family: 'Courier New', monospace;">
+            <input name="toppings" type="checkbox" value="Pepperoni"> Pepperoni<br>
+            <input name="toppings" type="checkbox" value="Canadian Bacon"> Canadian Bacon<br>
+            <input name="toppings" type="checkbox" value="Sausage"> Sausage<br>
+            <input name="toppings" type="checkbox" value="Mushrooms"> Mushrooms<br>
+            <input name="toppings" type="checkbox" value="Pineapple"> Pineapple<br>
+            <input name="toppings" type="checkbox" value="Black Olives"> Black Olives<br>
+        </div>
+
+        <br>
+        <input type="button" value="Submit Order" onclick="doSubmit()">
+        <input type="button" value="Clear Entries" onclick="doClear()">
+    </form>
+</body>
+</html>
